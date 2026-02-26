@@ -1,0 +1,31 @@
+\section{Experimental Results}
+\subsection{Datasets}
+Include a description of the data used, what it contains, train test splits, etc.
+\subsection{Implementation Details}
+Include a description of the design choices, hyperparameters, and other implementation specific details.
+
+\subsection{Results}
+Analyze and discuss your results. Table \ref{tab:example-table} shows an example of a table.
+Include plots and visualizations such as Figure \ref{fig:one-col-figure}.
+
+\subsection{Discussion}
+Additionally, you can include a separate discussion section in which you summarize the results, indicate possible limitations of your work, and provide suggestions for future research.
+
+\subsection{Citing references}
+LaTeX manages the citations for you. You simply have to add the bibtex entry for the reference in the references.bib file and you can use the citation in the paper \cite{langley00}. You can also cite multiple references in one command \cite{DudaHart2nd,Newell81,kearns89}. The bibtex entries for a paper can be obtained in websites such as google scholar or dblp.
+
+\begin{table}[ht]
+    \centering
+    \label{tab:example-table}
+    \caption{Example Table}
+    \begin{tabular}{lllll}
+        \toprule
+        \multirow{2}{*}{Models} & \multicolumn{3}{c}{Metric 1} & Metric 2\\
+        \cmidrule{2-4} \cmidrule{5-5} \\
+        {} & precision & recall & F-score  & R@10 \\
+        \midrule
+        model 1 & 0.67  & 0.8 & 0.729  & 0.75 \\
+        model 2 & 0.8 & 0.9 & 0.847 & 0.85 \\
+        \bottomrule
+    \end{tabular}
+\end{table}
