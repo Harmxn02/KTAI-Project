@@ -1,0 +1,187 @@
+\documentclass[11pt,a4paper]{article}
+
+% Encoding and language
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[english]{babel}
+
+% Page layout
+\usepackage[a4paper, margin=1in]{geometry}
+
+% Math and symbols
+\usepackage{amsmath, amssymb}
+
+% Graphics and tables
+\usepackage{graphicx}
+\usepackage{booktabs}
+
+% URLs and hyperlinks
+\usepackage{url}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    urlcolor=blue,
+    citecolor=blue
+}
+
+% Better lists
+\usepackage{enumitem}
+
+% Code/verbatim blocks
+\usepackage{verbatim}
+
+% Bibliography
+\usepackage[numbers]{natbib}
+
+% Paragraph spacing
+\setlength{\parskip}{0.5em}
+\setlength{\parindent}{0pt}
+
+\begin{document}
+{\huge \textbf{Generation of Common-Sense Knowledge}}
+
+\section{Description}
+
+An exciting field in literature is the use of knowledge graphs to learn models for common-sense reasoning. A recent paper on this topic~\cite{hwang2021atomic}, which (at the time of writing this assignment) will appear soon at a major AI conference, has a pre-print available at \url{https://arxiv.org/abs/2010.05953}. The code and models associated with this paper can be found at \url{https://github.com/allenai/comet-atomic-2020}.
+
+In brief, the paper describes a system where a neural network model is trained on a large knowledge graph. The authors use this neural network to generate new knowledge in natural language. For example, when asked the question: \textit{What would be the effect of choosing this assignment for PersonX?}, the system outputs:
+
+\begin{verbatim}
+[['PersonX learns something new', 'PersonX gets the assignment',
+  'PersonX gets a job', 'learns something new', 'none']]
+\end{verbatim}
+
+\section{Tasks}
+
+This assignment has the following requirements:
+
+\begin{enumerate}
+	\item Summarise the paper associated with the assignment, and place the topic of the paper in the context of current AI research (i.e., make use of course material). The summary should be understandable to fellow students who have not read the paper.
+
+	\item Describe your (new) experiment(s), and explain what you aimed to investigate.
+
+	\item Describe how you adapted the software to run your new experiment. Focus on key ideas rather than copying code. You may submit code separately or refer to a repository.
+
+	\item Describe your results and compare them with those reported in the paper.
+
+	\item Provide a brief conclusion: what did you learn?
+\end{enumerate}
+
+\subsection{Requirements}
+
+This assignment uses existing code from the paper to run and adapt experiments. Running such ``academic-quality'' code may require effort. The code relies on Python and Bash scripts, so access to a Unix-based system (e.g., Linux or macOS) is recommended. At least one team member should have experience running such setups.
+
+\subsection{Notes on Getting Started with Code}
+
+\subsubsection*{General Installation}
+
+The GitHub repository provides detailed setup instructions. After installing dependencies, run:
+
+\begin{verbatim}
+python models/comet_atomic2020_gpt2/comet_gpt2.py --test_install
+\end{verbatim}
+
+Additional steps may be required. For example, on some systems (Python 3.9), installing the \texttt{transformers} and \texttt{wandb} packages is necessary.
+
+If you encounter the following error:
+
+\begin{verbatim}
+Traceback (most recent call last):
+File "models/comet_atomic2020_gpt2/comet_gpt2.py", line 22, in <module>
+from split.utils import write_items
+\end{verbatim}
+
+you can resolve it by modifying \texttt{comet\_gpt2.py}: remove the problematic import and add:
+
+\begin{verbatim}
+import sys
+sys.path.append(r'<path_to_comet_directory>')
+
+def write_items(output_file, items):
+    with open(output_file, 'w') as f:
+        for concept in items:
+            f.write(concept + "\n")
+\end{verbatim}
+
+Replace the path with your local directory. After this, the test installation should complete without errors.
+
+\subsubsection*{Generating Examples}
+
+Within the \texttt{models} directory, you can experiment with pretrained models. For example, in \texttt{models/comet\_atomic2020\_bart}, run:
+
+\begin{verbatim}
+download_model.sh
+\end{verbatim}
+
+To test the setup, generate an example:
+
+\begin{verbatim}
+python ./generation_example.py
+\end{verbatim}
+
+Expected output:
+
+\begin{verbatim}
+model loading ...
+model loaded
+['PersonX eats an apple xNeed [GEN]']
+[[' to buy an apple', ' to get an apple', ' to pick one up',
+  ' to pick one', ' none']]
+\end{verbatim}
+
+\subsubsection*{Reproducing Experiments}
+
+The repository also includes scripts to reproduce experimental results. In the \texttt{system\_eval} directory, run:
+
+\begin{verbatim}
+python automatic_eval.py --input_file BART/BART-atomic_2020.json
+\end{verbatim}
+
+This produces a table such as:
+
+\begin{center}
+	\begin{tabular}{lcccc}
+		\hline
+		                      & BLEU-1 & BLEU-2 & BLEU-3 & BLEU-4 \\
+		\hline
+		BART-atomic 2020 gens & 0.468  & 0.286  & 0.189  & 0.130  \\
+		\hline
+	\end{tabular}
+\end{center}
+
+Compare these results with Table 7 in the paper.
+
+\subsection{What You Need to Do}
+
+You are not required to retrain models due to computational constraints. Instead, focus on analysing the pretrained BART model.
+
+The paper reports metrics across various query types (tail generations). Your goal is to investigate whether performance varies across different query types.
+
+Design an experiment that:
+
+\begin{itemize}
+	\item Partitions the evaluation data and evaluates each subset separately.
+\end{itemize}
+
+Possible partitioning strategies include:
+\begin{itemize}
+	\item Relationship types
+	\item Query length
+	\item Output length
+\end{itemize}
+
+Be creative. Reflect on how to compare results across partitions: which evaluation metrics will you use, and why?
+
+\section{Bibliography}
+
+\begin{thebibliography}{1}
+
+	\bibitem{hwang2021atomic}
+	J.~D. Hwang, C.~Bhagavatula, R.~Le Bras, J.~Da, K.~Sakaguchi, A.~Bosselut, and Y.~Choi,
+	``(COMET-) ATOMIC 2020: On symbolic and neural common-sense knowledge graphs,''
+	\textit{Proceedings of the AAAI Conference on Artificial Intelligence},
+	vol.~35, pp.~6384--6392, May 2021.
+
+\end{thebibliography}
+\end{document}
