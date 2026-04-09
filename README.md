@@ -18,7 +18,7 @@ Intelligence, vol. 35, pp. 6384–6392, May 2021.
 
 ## 📄 Project Report
 
-..., ..., ..., ... are provided in the accompanying **PDF report**.
+An introduction, an overview of related works, methods, experimental results, discussion and a conclusion are provided in the accompanying **PDF report**.
 
 Please refer to the file [`/report/main.pdf`](/report/main.pdf)
 
