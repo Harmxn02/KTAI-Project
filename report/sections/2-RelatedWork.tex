@@ -3,11 +3,35 @@
 
 % Briefly provide an overview of previous research and studies that are relevant to your topic. Show how this project fits into the broader conversation. Highlight what has already been done / discussed. Summarize key findings, identify gaps or limitations in existing research, and explain how your project builds on or differs from past efforts. Focus on the most important and credible sources and keep your explanations clear and concise.
 
-\textbf{Points:} \textit{Literature search + comparison with current work}
-\begin{itemize}
-	\item Is the related work considering the main contributions?
-	\item Is the related work considering close contributions in related fields too?
-	\item Is the related work producing a comparison between the current contribution and the one in the related work?
-	\item Was there a narrative for the related works and not just a laundry list?
-	\item Language/Structure/Clarity
-\end{itemize}
+% \textbf{Points:} \textit{Literature search + comparison with current work}
+% \begin{itemize}
+% 	\item Is the related work considering the main contributions?
+% 	\item Is the related work considering close contributions in related fields too?
+% 	\item Is the related work producing a comparison between the current contribution and the one in the related work?
+% 	\item Was there a narrative for the related works and not just a laundry list?
+% 	\item Language/Structure/Clarity
+% \end{itemize}
+
+
+
+
+
+
+% = PARAGRAPH 1 - Commonsense knowledge graphs
+
+% Trace the lineage from ConceptNet and ATOMIC through to ATOMIC$^{2020}$. The narrative thread here is: each resource attempted to address coverage or quality limitations of its predecessor. This directly contextualises why ATOMIC$^{2020}$ was built the way it was, with its 23 relation types across three categories
+
+ConceptNet's goal was to collect the everyday knowledge computers need to understand what people were talking about~\cite{speer2012conceptnet, speer2017conceptnet}. According to the creators of ATOMIC, ConceptNet was too focused on general knowledge and did not capture wider inferential commonsense~\cite{sap2019atomic}. So, they developed ATOMIC to address the coverage limitations of ConceptNet by using a crowdsourcing approach. However, this crowdsourced data, having a noisy nature, led to ATOMIC having quality issues. To address this, \citet{hwang2021cometatomic} developed ATOMIC$^{2020}$, which was created using a more controlled data collection process and includes 23 relation types across three categories (social interactions, physical interactions, and event-centered interactions) to improve the quality and coverage of commonsense knowledge.
+
+% = PARAGRAPH 2 - Neural knowledge models
+
+% Cover the COMET framework \cite{bosselut-etal-2019-comet} as the bridge between static knowledge graphs and generative language models, then connect it to COMET-BART from \citet{hwang2021cometatomic}. Also briefly mention GPT-3 as a point of comparison the original paper uses, since it motivates why a smaller fine-tuned model is worth studying. The narrative thread is: fine-tuning on structured knowledge outperforms raw scale
+
+The COMET framework~\cite{bosselut-etal-2019-comet} was developed to bridge the gap between static knowledge graphs and generative language models. It fine-tunes a pre-trained language model on a structured knowledge graph (ATOMIC) to generate commonsense inferences. COMET-BART, introduced by \citet{hwang2021cometatomic}, is an extension of the COMET framework that uses the BART architecture and is trained on the updated ATOMIC$^{2020}$ knowledge graph. The original paper also compares COMET-BART's performance to GPT-3~\cite{brown2020language}, a much larger language model. The comparison showed that fine-tuning on structured knowledge (COMET-BART) outperforms raw scale (GPT-3) in generating commonsense inferences.
+
+
+% = PARAGRAPH 3 - Evaluation of text generation and your gap
+
+% Briefly mention BLUE and related automatic metrics (ROUGE, METEOR) as standard tools for evaluation generative models. Then use this paragraph to draw the comparison the rubric asks for: prior work evaluated COMET-BART at the aggregate level, whereas your work applies the same metrics at a finer granularity. This is the paragraph that justifies your contribution relative to the literature
+
+The evaluation metric used in the original paper to assess COMET-BART's performance is BLEU~\cite{papineni2002bleu}, which is a standard tool for evaluating generative models. Other related automatic metrics include ROUGE~\cite{lin2004rouge} and METEOR~\cite{banerjee2005meteor}. Prior work evaluated COMET-BART's performance at the aggregate level across all relation types. In contrast, the gap in the literature that this report addresses is the lack of a finer-grained analysis of COMET-BART's performance across different relation types. This report applies the same BLEU metric on a per-relation basis to provide a more detailed understanding of COMET-BART's strengths and weaknesses in generating commonsense inferences.
