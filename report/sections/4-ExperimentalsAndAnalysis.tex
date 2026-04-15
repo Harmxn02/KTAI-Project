@@ -31,14 +31,37 @@
 %     \end{tabular}
 % \end{table}
 
-\textbf{Points:} \textit{Experiments, analysis, and evaluation of the methods on data, benchmarks, simulations}
-\begin{itemize}
-    \item Does the evaluation contain proper baselines?
-    \item Is the evaluation correctly performed from a data analytics/machine learning perspective (depending on the field)
-    \item Are there ablation experiments?
-    \item Error analysis (e.g. analysis on which cases does it work and which cases does it fail?, is there a pattern across the errors? Analysis on the root cause of the problems?, etc.)
-    \item Other experiments (e.g. interpretability? Attention visualization? Qualitative?, etc.)
-    \item Were there statistical analysis?
-\end{itemize}
+% \textbf{Points:} \textit{Experiments, analysis, and evaluation of the methods on data, benchmarks, simulations}
+% \begin{itemize}
+%     \item Does the evaluation contain proper baselines?
+%     \item Is the evaluation correctly performed from a data analytics/machine learning perspective (depending on the field)
+%     \item Are there ablation experiments?
+%     \item Error analysis (e.g. analysis on which cases does it work and which cases does it fail?, is there a pattern across the errors? Analysis on the root cause of the problems?, etc.)
+%     \item Other experiments (e.g. interpretability? Attention visualization? Qualitative?, etc.)
+%     \item Were there statistical analysis?
+% \end{itemize}
 
 
+% = PARAGRAPH 1 - Baseline comparison
+
+Present the aggregate BLEU scores from your run (BLEU-1: 0.468, BLEU-2: 0.286, BLEU-3: 0.189, BLEU-4: 0.130) and compare them directly with Table 7 in \citet{hwang2021cometatomic}. This serves as your baseline sanity check \textemdash{} confirming your evaluation pipeline reproduces the paper's numbers before diving into the per-relation breakdown. Note that your overall scores match, which validates the experimental setup
+
+% = PARAGRAPH 2 - Category-level results
+
+Present the three-way category table and not that differences are suprisingly small (BLEU-1 ranging only from 0.708-0.763). Discuss the ordering: social-iteractions leads on BLEU-1 and BLEU-2, while event-centred leads on BLEU-3 and BLEU-4. This is where you address the original hypothesis and not it was only partially supported.
+
+% = PARAGRAPH 3 - Per-relation results: strong performers
+
+Focus on \verb|HinderedBy| (0.891) and \verb|ObjectUse| (0.876) as standout relations. For \verb|HinderedBy| specifically, connetc back to the paper's finding that zero-shot GPT-2 scored only 1.3\% plausibility on this relation \textemdash{} this contrast is your strongest qualitative insight and directly addresses the error analysis requirement.
+
+% = PARAGRAPH 4 - Per-relation results: weak performers
+
+Discuss \verb|Causes| (0.315), \verb|HasProperty| (0.428), and \verb|CapableOf| (0.462) as the weakest relations. Offer a possibly explanation \textemdash{} these tend to require more open-ended, diverse outputs, making exact n-gram overlap with reference tails inherently harder to achieve. This is your error analysis paragraph.
+
+% = PARAGRAPH 5 - Statistical caveat / ablation note
+
+Flag the class inbalance issue explicitly: the weak performers also have very low counts (\verb|Causes|: 9, \verb|Desires|: 1, \verb|NotDesires|: 1), meaning their scores are unreliable estimates. Mention that \verb|xReason| and \verb|NotDesires| each have only 1 test example and should be disregarded. This addresses the statistical analysis requirement from the rubric and is an honest limitation of the per-relation breakdown.
+
+% = PARAGRAPH 6 - Why category-level aggregation masks per-relation variance
+
+Tie paragraph 4 and 5 together by explaining that because weak relations have very low counts, they contribute little weight to the category averages \textemdash{} which is why category-level BLEU scores look deceptively uniform. This is your ablation-style insight: the coarse-grained view hides what the fine-grained view reveals, which is the core argument of your whole investigation (my approach is the coarse grained one btw, apparently it sucks)
