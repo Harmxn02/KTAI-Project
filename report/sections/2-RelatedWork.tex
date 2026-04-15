@@ -34,4 +34,10 @@ The COMET framework~\cite{bosselut-etal-2019-comet} was developed to bridge the 
 
 % Briefly mention BLUE and related automatic metrics (ROUGE, METEOR) as standard tools for evaluation generative models. Then use this paragraph to draw the comparison the rubric asks for: prior work evaluated COMET-BART at the aggregate level, whereas your work applies the same metrics at a finer granularity. This is the paragraph that justifies your contribution relative to the literature
 
-The evaluation metric used in the original paper to assess COMET-BART's performance is BLEU~\cite{papineni2002bleu}, which is a standard tool for evaluating generative models. Other related automatic metrics include ROUGE~\cite{lin2004rouge} and METEOR~\cite{banerjee2005meteor}. Prior work evaluated COMET-BART's performance at the aggregate level across all relation types. In contrast, the gap in the literature that this report addresses is the lack of a finer-grained analysis of COMET-BART's performance across different relation types. This report applies the same BLEU metric on a per-relation basis to provide a more detailed understanding of COMET-BART's strengths and weaknesses in generating commonsense inferences.
+The evaluation metric used in the original paper to assess COMET-BART's performance is BLEU~\cite{papineni2002bleu}, which is a standard tool for evaluating generative models. Other related automatic metrics include ROUGE~\cite{lin2004rouge}, METEOR~\cite{banerjee2005meteor}, CIDEr~\cite{Vedantam2015CVPR} and BERTScore~\cite{zhang2019bertscore}. Prior work evaluated COMET-BART's performance at the aggregate level across all relation types. In contrast, the gap in the literature that this report addresses is the lack of a finer-grained analysis of COMET-BART's performance across different relation types. This report applies the same BLEU metric on a per-relation basis to provide a more detailed understanding of COMET-BART's strengths and weaknesses in generating commonsense inferences.
+
+% in the actual paper they reference (PAGE 7, EVALUATION SETUP, last paragraph):
+% - BLEU (Papineni et al. 2002)
+% - ROUGE(Lin 2004)
+% - CIDEr(Vedantam, Lawrence Zitnick, and Parikh 2015)
+% - BERTScore (Zhang et al.2020b)
