@@ -44,24 +44,86 @@
 
 % = PARAGRAPH 1 - Baseline comparison
 
-Present the aggregate BLEU scores from your run (BLEU-1: 0.468, BLEU-2: 0.286, BLEU-3: 0.189, BLEU-4: 0.130) and compare them directly with Table 7 in \citet{hwang2021cometatomic}. This serves as your baseline sanity check \textemdash{} confirming your evaluation pipeline reproduces the paper's numbers before diving into the per-relation breakdown. Note that your overall scores match, which validates the experimental setup
+% Present the aggregate BLEU scores from your run (BLEU-1: 0.468, BLEU-2: 0.286, BLEU-3: 0.189, BLEU-4: 0.130) and compare them directly with Table 7 in \citet{hwang2021cometatomic}. This serves as your baseline sanity check \textemdash{} confirming your evaluation pipeline reproduces the paper's numbers before diving into the per-relation breakdown. Note that your overall scores match, which validates the experimental setup
+
+\subsection{Baseline comparison}
+
+We aggregate BLEU scores from our run, as found in Table~\ref{tab:baseline-comparison}, and compare them to Table 7 in \citet{hwang2021cometatomic}. Our overall scores closely match the paper's reported numbers, confirming that our evaluation pipeline successfully reproduces the baseline results.
+
+
+\begin{table}[h]
+	\begin{tabular}{|l|c|c|c|}
+		\hline
+		\textbf{Metric} & \textbf{Our results} & \textbf{Paper's results} & \textbf{$\Delta$} \\
+		\hline
+		BLEU-1          & 0.468                & 0.469                    & -0.001            \\
+		BLEU-2          & 0.286                & 0.286                    & 0.000             \\
+		BLEU-3          & 0.189                & 0.189                    & 0.000             \\
+		BLEU-4          & 0.130                & 0.130                    & 0.000             \\
+		\hline
+	\end{tabular}
+	\caption{Comparison of evaluation pipeline results}
+	\label{tab:baseline-comparison}
+\end{table}
+
+
+
 
 % = PARAGRAPH 2 - Category-level results
 
-Present the three-way category table and not that differences are suprisingly small (BLEU-1 ranging only from 0.708-0.763). Discuss the ordering: social-iteractions leads on BLEU-1 and BLEU-2, while event-centred leads on BLEU-3 and BLEU-4. This is where you address the original hypothesis and not it was only partially supported.
+% Present the three-way category table and not that differences are suprisingly small (BLEU-1 ranging only from 0.708-0.763). Discuss the ordering: social-iteractions leads on BLEU-1 and BLEU-2, while event-centred leads on BLEU-3 and BLEU-4. This is where you address the original hypothesis and not it was only partially supported.
+
+Table~\ref{tab:category-level-results} breaks down the results by category. We find that the differences are rather small, with BLEU-1 scores ranging only from 0.708 to 0.763 across the three categories. Social interactions leads on BLEU-1 and BLEU-2, while event-centered relations lead on BLEU-3 and BLEU-4. This suggests that while there are some differences in performance across categories, they are not very pronounced. With the differences between categories being small, we conclude that our original hypothesis, that social interactions would outperform the other categories, is only partially supported
+
+
+% | Name               |   Count |   BLEU-1 |   BLEU-2 |   BLEU-3 |   BLEU-4 |
+% |--------------------|---------|----------|----------|----------|----------|
+% | social-interaction |    2222 |    0.763 |    0.605 |    0.498 |    0.412 |
+% | physical-entity    |     356 |    0.716 |    0.582 |    0.492 |    0.418 |
+% | event-centred      |    1388 |    0.708 |    0.598 |    0.523 |    0.462 |
+
+
+\begin{table}[h]
+	\begin{tabular}{|l|c|c|c|c|}
+		\hline
+		\textbf{Name} & \textbf{BLEU-1} & \textbf{BLEU-2} & \textbf{BLEU-3} & \textbf{BLEU-4} \\
+		\hline
+		SI            & 0.763           & 0.605           & 0.498           & 0.412           \\
+		PE            & 0.716           & 0.582           & 0.492           & 0.418           \\
+		EC            & 0.708           & 0.598           & 0.523           & 0.462           \\
+		\hline
+	\end{tabular}
+	\caption{BLEU scores by category}
+	\label{tab:category-level-results}
+\end{table}
+
+
+
 
 % = PARAGRAPH 3 - Per-relation results: strong performers
 
-Focus on \verb|HinderedBy| (0.891) and \verb|ObjectUse| (0.876) as standout relations. For \verb|HinderedBy| specifically, connetc back to the paper's finding that zero-shot GPT-2 scored only 1.3\% plausibility on this relation \textemdash{} this contrast is your strongest qualitative insight and directly addresses the error analysis requirement.
+% Focus on \code{HinderedBy} (0.891) and \code{ObjectUse} (0.876) as standout relations. For \code{HinderedBy} specifically, connetc back to the paper's finding that zero-shot GPT-2 scored only 1.3\% plausibility on this relation \textemdash{} this contrast is your strongest qualitative insight and directly addresses the error analysis requirement.
+
+Two relations that stand out as strong performers are \Code{HinderedBy} (0.891) and \code{ObjectUse} (0.876). The high BLEU score for \code{HinderedBy} is particularly noteworthy, because the original paper found that zero-shot GPT-2 scored only 1.3\% plausibility on this relation. This contrast in performance suggests that while the model may struggle to generate plausible tails for \code{HinderedBy} in a zero-shot setting, it can still produce outputs with high n-gram overlap with the reference tails, which is what BLEU measures.
+
 
 % = PARAGRAPH 4 - Per-relation results: weak performers
 
-Discuss \verb|Causes| (0.315), \verb|HasProperty| (0.428), and \verb|CapableOf| (0.462) as the weakest relations. Offer a possibly explanation \textemdash{} these tend to require more open-ended, diverse outputs, making exact n-gram overlap with reference tails inherently harder to achieve. This is your error analysis paragraph.
+% Discuss \code{Causes} (0.315), \code{HasProperty} (0.428), and \code{CapableOf} (0.462) as the weakest relations. Offer a possibly explanation \textemdash{} these tend to require more open-ended, diverse outputs, making exact n-gram overlap with reference tails inherently harder to achieve. This is your error analysis paragraph.
+
+There are also relations that do not perform well: \code{Causes} (0.315), \code{HasProperty} (0.428), \code{CapableOf} (0.462). A possible explanation for these low scores is that these specific relations might require more open-ended outputs, which would make achieving exact n-gram overlap with the reference tails difficult.
+
+
 
 % = PARAGRAPH 5 - Statistical caveat / ablation note
 
-Flag the class inbalance issue explicitly: the weak performers also have very low counts (\verb|Causes|: 9, \verb|Desires|: 1, \verb|NotDesires|: 1), meaning their scores are unreliable estimates. Mention that \verb|xReason| and \verb|NotDesires| each have only 1 test example and should be disregarded. This addresses the statistical analysis requirement from the rubric and is an honest limitation of the per-relation breakdown.
+% Flag the class inbalance issue explicitly: the weak performers also have very low counts (\code{Causes}: 9, \code{Desires}: 1, \code{NotDesires}: 1), meaning their scores are unreliable estimates. Mention that \code{xReason} and \code{NotDesires} each have only 1 test example and should be disregarded. This addresses the statistical analysis requirement from the rubric and is an honest limitation of the per-relation breakdown.
+
+Weak performers often have low prevalence in the test set, with \code{Causes} having only 9 examples, and \code{Desires} and \code{NotDesires} having only 1 example each. This class imbalance issue means that the BLEU scores for these relations are unreliable estimates of true performance.
+
 
 % = PARAGRAPH 6 - Why category-level aggregation masks per-relation variance
 
-Tie paragraph 4 and 5 together by explaining that because weak relations have very low counts, they contribute little weight to the category averages \textemdash{} which is why category-level BLEU scores look deceptively uniform. This is your ablation-style insight: the coarse-grained view hides what the fine-grained view reveals, which is the core argument of your whole investigation (my approach is the coarse grained one btw, apparently it sucks)
+% Tie paragraph 4 and 5 together by explaining that because weak relations have very low counts, they contribute little weight to the category averages \textemdash{} which is why category-level BLEU scores look deceptively uniform. This is your ablation-style insight: the coarse-grained view hides what the fine-grained view reveals, which is the core argument of your whole investigation (my approach is the coarse grained one btw, apparently it sucks)
+
+The low counts of weak relations mean that they contribute little weight to the category averages, which is why the category-level BLEU scores of our partitioning strategy look deceptively uniform, hence us aggregating both the category-level and relation-level results. An argument for our coarse-grained partitioning strategy is that it provides a more stable estimate of performance across categories.
