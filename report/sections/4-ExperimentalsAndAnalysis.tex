@@ -48,7 +48,7 @@
 
 \subsection{Baseline comparison}
 
-We aggregate BLEU scores from our run, as found in Table~\ref{tab:baseline-comparison}, and compare them to Table 7 in \citet{hwang2021cometatomic}. Our overall scores closely match the paper's reported numbers, confirming that our evaluation pipeline successfully reproduces the baseline results.
+In Table~\ref{tab:baseline-comparison}, we aggregate BLEU scores from our run and compare them to Table 7 in \citet{hwang2021cometatomic}. Our overall scores closely match the paper's reported numbers, confirming that our evaluation pipeline successfully reproduces the baseline results. The full breakdown of scores per relation type can be found in Table~\ref{tab:bleu-relation} and the breakdown by category in Table~\ref{tab:bleu-category} in the Appendix. 
 
 
 \begin{table}[h]
@@ -73,7 +73,7 @@ We aggregate BLEU scores from our run, as found in Table~\ref{tab:baseline-compa
 
 % Present the three-way category table and not that differences are suprisingly small (BLEU-1 ranging only from 0.708-0.763). Discuss the ordering: social-iteractions leads on BLEU-1 and BLEU-2, while event-centred leads on BLEU-3 and BLEU-4. This is where you address the original hypothesis and not it was only partially supported.
 
-Table~\ref{tab:category-level-results} breaks down the results by category. We find that the differences are rather small, with BLEU-1 scores ranging only from 0.708 to 0.763 across the three categories. Social interactions leads on BLEU-1 and BLEU-2, while event-centered relations lead on BLEU-3 and BLEU-4. This suggests that while there are some differences in performance across categories, they are not very pronounced. With the differences between categories being small, we conclude that our original hypothesis, that social interactions would outperform the other categories, is only partially supported
+Table~\ref{tab:bleu-category} breaks down the results by category, and we find that the differences are rather small, with BLEU-1 scores ranging only from 0.708 to 0.763 across the three categories. Social interactions leads on BLEU-1 and BLEU-2, while event-centered relations lead on BLEU-3 and BLEU-4. This suggests that while there are some differences in performance across categories, they are not very pronounced. With the differences between categories being small, we conclude that our original hypothesis, that social interactions would outperform the other categories, is only partially supported
 
 
 % | Name               |   Count |   BLEU-1 |   BLEU-2 |   BLEU-3 |   BLEU-4 |
@@ -81,21 +81,6 @@ Table~\ref{tab:category-level-results} breaks down the results by category. We f
 % | social-interaction |    2222 |    0.763 |    0.605 |    0.498 |    0.412 |
 % | physical-entity    |     356 |    0.716 |    0.582 |    0.492 |    0.418 |
 % | event-centred      |    1388 |    0.708 |    0.598 |    0.523 |    0.462 |
-
-
-\begin{table}[h]
-	\begin{tabular}{|l|c|c|c|c|}
-		\hline
-		\textbf{Name} & \textbf{BLEU-1} & \textbf{BLEU-2} & \textbf{BLEU-3} & \textbf{BLEU-4} \\
-		\hline
-		SI            & 0.763           & 0.605           & 0.498           & 0.412           \\
-		PE            & 0.716           & 0.582           & 0.492           & 0.418           \\
-		EC            & 0.708           & 0.598           & 0.523           & 0.462           \\
-		\hline
-	\end{tabular}
-	\caption{BLEU scores by category}
-	\label{tab:category-level-results}
-\end{table}
 
 
 

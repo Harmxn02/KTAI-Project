@@ -42,7 +42,7 @@ We reuse the existing \code{automatic\_eval.py} pipeline from the COMET-ATOMIC-2
 
 \subsection{Partitioning strategy}
 
-Each test example was assigned a category based on its relation type, using the three-way taxonomy from \citet{hwang2021cometatomic}: social-interaction, physical-entity, and event-centred (as detailed in Table 1). Scores were accumulated both at the individual relation level (23 types) and aggregated up to the category level. This partitioning strategy was chosen over alternatives like query length or output length because the three different category types represent different types of general knowledge and should also be evaluated as a group rather than as 23 separate relations.
+Each test example was assigned a category based on its relation type, using the three-way taxonomy from \citet{hwang2021cometatomic}: social-interaction, physical-entity, and event-centred (as detailed in Table~\ref{tab:categories}). Scores were accumulated both at the individual relation level (23 types) and aggregated up to the category level. This partitioning strategy was chosen over alternatives like query length or output length because the three different category types represent different types of general knowledge and should also be evaluated as a group rather than as 23 separate relations.
 
 
 % = PARAGRAPH 3 - Object function / scoring
