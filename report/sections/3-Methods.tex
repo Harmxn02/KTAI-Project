@@ -31,18 +31,33 @@
 
 % Briefly explain that the method reuses the existing automatic_eval.py pipeline from the COMET-ATOMIC-2020 repository, and that no model retraining was performed. Clarify the input: the pregenerated BART output file (BART-atomic_2020.json) containing greedy-decoded tails for the ATOMIC2020 test set, paired against reference tails from test.tsv. This satisfies the rubric's requirement to explain what the method is actually doing
 
-Long fuckass paragraph dummy bitch fuck ass.
+\subsection{Evaluation pipeline}
+
+We reuse the existing \code{automatic\_eval.py} pipeline from the COMET-ATOMIC-2020 repository, without any model retraining. The input consists of the pregenerated BART output file (\code{BART-atomic\_2020.json}), which contains greedy-decoded tails for the ATOMIC2020 test set, paired against reference tails from \code{test.tsv}. This setup has a twofold purpose: it allows us to verify the results from the original paper, and it allows us to make small modifications to the evaluation pipeline to support our proposed partitioning strategy.
 
 
 % = PARAGRAPH 2 - Partitioning strategy
 
-Explain how each test example was assigned a category based on its relation type, using the three-way taxonomy from \citet{hwang2021cometatomic}: social-interaction, physical-entity, and event-centred (you can find them in Table 1 in the original paper). Mention that scores were accumulated both at the individual relation level (23 types) and aggregated up to the category level. This is where you explain the core methodological choice \textemdash{} partitioning \textemdash{} an why the three-category split was chosen over alternatives like query length or output length. (It's because I believe the 3 different category types represent 3 entirely different types of general knowledge and have to also be evaluated as a group rather than only all 23 seperate)
+% Explain how each test example was assigned a category based on its relation type, using the three-way taxonomy from \citet{hwang2021cometatomic}: social-interaction, physical-entity, and event-centred (you can find them in Table 1 in the original paper). Mention that scores were accumulated both at the individual relation level (23 types) and aggregated up to the category level. This is where you explain the core methodological choice \textemdash{} partitioning \textemdash{} an why the three-category split was chosen over alternatives like query length or output length. (It's because I believe the 3 different category types represent 3 entirely different types of general knowledge and have to also be evaluated as a group rather than only all 23 seperate)
+
+\subsection{Partitioning strategy}
+
+Each test example was assigned a category based on its relation type, using the three-way taxonomy from \citet{hwang2021cometatomic}: social-interaction, physical-entity, and event-centred (as detailed in Table 1). Scores were accumulated both at the individual relation level (23 types) and aggregated up to the category level. This partitioning strategy was chosen over alternatives like query length or output length because the three different category types represent different types of general knowledge and should also be evaluated as a group rather than as 23 separate relations.
+
 
 % = PARAGRAPH 3 - Object function / scoring
 
-Explain BLEU-1 through BLEU-4 as the evaluation metrics, and why all four variants are reported rather than just one (apparently in the original paper they only show BLEU-1) %TODO) VERIFY THIS
-Importantly, mention that \verb|none| responses are excluded from scoring, following the convention already present in the original code. This addresses the rubric's requirement to explain the objective function.
+% Explain BLEU-1 through BLEU-4 as the evaluation metrics, and why all four variants are reported rather than just one (apparently in the original paper they only show BLEU-1) %TODO) VERIFY THIS
+% Importantly, mention that \code{none} responses are excluded from scoring, following the convention already present in the original code. This addresses the rubric's requirement to explain the objective function.
+
+\subsection{Scoring}
+
+We use BLEU-1 through BLEU-4 as the evaluation metrics, reporting all four variants to provide a more comprehensive picture of n-gram overlap between generated and reference tails. Following the convention in the original code, \code{none} responses are excluded from scoring, so that only valid generations are evaluated.
 
 % = PARAGRAPH 4 - Variations considered
 
-Briefly mention the two levels of granularity as variations of the same methods: per-relation (fine-grained, 23 groups) versus per-category (coarse-grained, 3 groups). You could also note that query-length or output-length partitioning were considered as alternative strategies but that relation type was chosen because it maps directly onto the knowledge graph structure and is most directly comparable to the paper's own per-relation human evaluation in Table 3.
+% Briefly mention the two levels of granularity as variations of the same methods: per-relation (fine-grained, 23 groups) versus per-category (coarse-grained, 3 groups). You could also note that query-length or output-length partitioning were considered as alternative strategies but that relation type was chosen because it maps directly onto the knowledge graph structure and is most directly comparable to the paper's own per-relation human evaluation in Table 3.
+
+\subsection{Alternative partitioning strategies}
+
+Whereas the original paper benchmarked at a fine-grained per-relation level, we report both per-relation (fine-grained, 23 groups) and per-category (coarse-grained, 3 groups) scores as variations of the same method.  We also considered alternative partitioning strategies based on query length or output length, but opted for relation type because it maps directly onto the knowledge graph structure. It is also most directly comparable to the paper's own per-relation human evaluation.
