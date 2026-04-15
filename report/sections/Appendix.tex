@@ -4,96 +4,12 @@
 \section{Tables}
 
 % ---------- FIRST TABLE ----------
-\begin{table}[h]
+% \clearpage
+\begin{table}[th]
 	\centering
-	\setlength{\tabcolsep}{6pt}
-	\renewcommand{\arraystretch}{1.2}
+	\setlength{\tabcolsep}{8.3pt}
 
-	\begin{tabular}{|c l l l r|}
-		\hline
-		 & \textbf{Head}                        & \textbf{Relation}      & \textbf{Tail}          & \textbf{Size} \\
-		\hline
-
-		\multirow{7}{*}{\rotatebox{90}{\textbf{\small PHYSICAL-ENTITY}}}
-		 & \multirow{4}{*}{bread}               & ObjectUse              & make french toast      & 165590        \\
-		 &                                      & AtLocation             & basket; pantry         & 20221         \\
-		 &                                      & MadeUpOf               & dough; wheat           & 3345          \\
-		 &                                      & HasProperty            & cooked; nice to eat    & 5617          \\
-
-		\cline{2-5}
-
-		 & \multirow{3}{*}{baker}               & CapableOf              & coat cake with icing   & 7968          \\
-		 &                                      & Desires                & quality ingredients    & 2737          \\
-		 &                                      & NotDesires             & bad yeast              & 2838          \\
-
-		\hline
-		\hline
-
-		\multirow{7}{*}{\rotatebox{90}{\textbf{\small EVENT-CENTERED}}}
-		 & \multirow{6}{*}{X runs out of steam}
-		 & IsAfter                              & X exercises in the gym & 22453                                  \\
-		 &                                      & HasSubEvent            & become tired           & 12845         \\
-		 &                                      & IsBefore               & X hits the showers     & 23208         \\
-		 &                                      & HinderedBy             & drinks too much coffee & 106658        \\
-		 &                                      & Causes                 & takes a break          & 376           \\
-		 &                                      & xReason                & did not eat breakfast  & 334           \\
-
-		\cline{2-5}
-
-		 & X watches anyway                     & isFilledBy             & the game; the TV       & 33266         \\
-
-		\hline
-		\hline
-
-		\multirow{9}{*}{\rotatebox{90}{\textbf{\small SOCIAL-INTERACTION}}}
-		 & \multirow{5}{*}{X runs out of steam}
-		 & xNeed                                & do something tiring    & 128955                                 \\
-		 &                                      & xAttr                  & old; lazy; lethargic   & 148194        \\
-		 &                                      & xEffect                & drinks some water      & 115124        \\
-		 &                                      & xReact                 & tired                  & 81397         \\
-		 &                                      & xWant                  & to get some energy     & 135360        \\
-
-		\cline{2-5}
-
-		 & \multirow{4}{*}{X votes for Y}
-		 & xIntent                              & to give support        & 72677                                  \\
-		 &                                      & oEffect                & receives praise        & 80166         \\
-		 &                                      & oReact                 & grateful; confident    & 67236         \\
-		 &                                      & oWant                  & thank X; celebrate     & 94548         \\
-
-		\hline
-	\end{tabular}
-	\caption{All 23 relations grouped in the 3 coarse categories.}
-	\label{tab:categories}
-\end{table}
-
-
-% ---------- SECOND TABLE ----------
-\begin{table*}[ht]
-	\centering
-	\setlength{\tabcolsep}{10pt}
-
-	\begin{tabular}{|l|r|r r r r|}
-		\hline
-		\textbf{Name}      & \textbf{Count} & \textbf{BLEU-1} & \textbf{BLEU-2} & \textbf{BLEU-3} & \textbf{BLEU-4} \\
-		\hline
-		social-interaction & 2222           & 0.763           & 0.605           & 0.498           & 0.412           \\
-		physical-entity    & 356            & 0.716           & 0.582           & 0.492           & 0.418           \\
-		event-centred      & 1388           & 0.708           & 0.598           & 0.523           & 0.462           \\
-		\hline
-	\end{tabular}
-
-	\caption{BLEU scores per ATOMIC2020 category.}
-	\label{tab:bleu-category}
-\end{table*}
-
-
-% ---------- THIRD TABLE ----------
-\begin{table*}[ht]
-	\centering
-	\setlength{\tabcolsep}{8pt}
-
-	\begin{tabular}{|l|r|r r r r|}
+	\begin{tabular}{|l|c|c c c c|}
 		\hline
 		\textbf{Name} & \textbf{Count} & \textbf{BLEU-1} & \textbf{BLEU-2} & \textbf{BLEU-3} & \textbf{BLEU-4} \\
 		\hline
@@ -126,5 +42,24 @@
 	\caption{BLEU scores per relation type.}
 	\label{tab:bleu-relation}
 
-\end{table*}
+\end{table}
 
+
+% ---------- SECOND TABLE ----------
+\begin{table}[ht]
+	\centering
+	\setlength{\tabcolsep}{7pt}
+
+	\begin{tabular}{|l|c|c c c c|}
+		\hline
+		\textbf{Name}      & \textbf{Count} & \textbf{BLEU-1} & \textbf{BLEU-2} & \textbf{BLEU-3} & \textbf{BLEU-4} \\
+		\hline
+		social-interaction & 2222           & 0.763           & 0.605           & 0.498           & 0.412           \\
+		physical-entity    & 356            & 0.716           & 0.582           & 0.492           & 0.418           \\
+		event-centred      & 1388           & 0.708           & 0.598           & 0.523           & 0.462           \\
+		\hline
+	\end{tabular}
+
+	\caption{BLEU scores per ATOMIC2020 category.}
+	\label{tab:bleu-category}
+\end{table}
