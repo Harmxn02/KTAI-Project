@@ -18,6 +18,25 @@
 \newcommand{\theHalgorithm}{\arabic{algorithm}}
 
 
+
+% INLINE CODE BLOCKS
+\usepackage{microtype}
+\usepackage{xcolor}
+\definecolor{codecolor}{RGB}{0, 110, 110}
+\newcommand{\code}[1]{\textls[-20]{\texttt{\textcolor{codecolor}{#1}}}}
+% \def\code#1{\mbox{\texttt{\textbf{#1}}}}
+
+
+
+
+% TABLE DESIGN
+\usepackage{multirow}
+\renewcommand{\arraystretch}{1.2}
+
+
+
+
+
 \usepackage[accepted]{icml2021}
 
 \icmltitlerunning{Generation of Common Sense Knowledge}
@@ -25,21 +44,21 @@
 \begin{document}
 
 \twocolumn[
-\icmltitle{Generation of Common Sense Knowledge}
+	\icmltitle{Generation of Common Sense Knowledge}
 
-\begin{icmlauthorlist}
-\icmlauthor{Harman Preet Singh (852863316)}{ou}
-\end{icmlauthorlist}
+	\begin{icmlauthorlist}
+		\icmlauthor{Harman Preet Singh (852863316)}{ou}
+	\end{icmlauthorlist}
 
-\icmlaffiliation{ou}{Open Universiteit}
-\icmlcorrespondingauthor{}{}
+	\icmlaffiliation{ou}{Open Universiteit}
+	\icmlcorrespondingauthor{}{}
 
-% You may provide any keywords that you
-% find helpful for describing your paper; these are used to populate
-% the "keywords" metadata in the PDF but will not be shown in the document
-\icmlkeywords{}
+	% You may provide any keywords that you
+	% find helpful for describing your paper; these are used to populate
+	% the "keywords" metadata in the PDF but will not be shown in the document
+	\icmlkeywords{}
 
-\vskip 0.3in
+	\vskip 0.3in
 ]
 
 \input{sections/0-Abstract.tex}
@@ -52,6 +71,9 @@
 
 \bibliography{references}
 \bibliographystyle{icml2021}
+
+
+\input{sections/Appendix.tex}
 
 
 \end{document}
