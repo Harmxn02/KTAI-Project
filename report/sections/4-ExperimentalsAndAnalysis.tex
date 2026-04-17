@@ -73,6 +73,8 @@ In Table~\ref{tab:baseline-comparison}, we aggregate BLEU scores from our run an
 
 % Present the three-way category table and not that differences are suprisingly small (BLEU-1 ranging only from 0.708-0.763). Discuss the ordering: social-iteractions leads on BLEU-1 and BLEU-2, while event-centred leads on BLEU-3 and BLEU-4. This is where you address the original hypothesis and not it was only partially supported.
 
+\subsection{Category-level results}
+
 Table~\ref{tab:bleu-category} breaks down the results by category, and we find that the differences are rather small, with BLEU-1 scores ranging only from 0.708 to 0.763 across the three categories. Social interactions leads on BLEU-1 and BLEU-2, while event-centered relations lead on BLEU-3 and BLEU-4. This suggests that while there are some differences in performance across categories, they are not very pronounced. With the differences between categories being small, we conclude that our original hypothesis, that social interactions would outperform the other categories, is only partially supported
 
 
@@ -88,6 +90,8 @@ Table~\ref{tab:bleu-category} breaks down the results by category, and we find t
 % = PARAGRAPH 3 - Per-relation results: strong performers
 
 % Focus on \code{HinderedBy} (0.891) and \code{ObjectUse} (0.876) as standout relations. For \code{HinderedBy} specifically, connetc back to the paper's finding that zero-shot GPT-2 scored only 1.3\% plausibility on this relation \textemdash{} this contrast is your strongest qualitative insight and directly addresses the error analysis requirement.
+
+\subsection{Per-relation results}
 
 Two relations that stand out as strong performers are \Code{HinderedBy} (0.891) and \code{ObjectUse} (0.876). The high BLEU score for \code{HinderedBy} is particularly noteworthy, because the original paper found that zero-shot GPT-2 scored only 1.3\% plausibility on this relation. This contrast in performance suggests that while the model may struggle to generate plausible tails for \code{HinderedBy} in a zero-shot setting, it can still produce outputs with high n-gram overlap with the reference tails, which is what BLEU measures.
 
