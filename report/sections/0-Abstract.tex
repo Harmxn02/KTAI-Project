@@ -1,16 +1,34 @@
 \begin{abstract}
-    \textbf{5 points \textemdash{} 100-150 words}
+    % \textbf{5 points \textemdash{} 100-150 words}
 
     % Write a short abstract that contains a brief summary of the work and describes the main points you want to make.
 
 
-    \textbf{Points:} \textit{Motivation, objective of the study, methods used and results}
-    \begin{itemize}
-        % dummy citation to get rid of natbib citation errors
-        \item Structure of the abstract
-        \item Does it touch the relevant points?
-        \item Language
-    \end{itemize}
+    % \textbf{Points:} \textit{Motivation, objective of the study, methods used and results}
+    % \begin{itemize}
+    %     \item Structure of the abstract
+    %     \item Does it touch the relevant points?
+    %     \item Language
+    % \end{itemize}
+
+    
+    
+    
+    
+    % = SENTENCE 1 - Motivation
+    % = SENTENCE 2 - Objective
+    % = SENTENCE 3 - Method
+    % = SENTENCE 4 - Results
+    
+    Commonsense knowledge graph models like COMET-BART are typically evaluated using aggregate metrics, which may obscure meaningful variation across different relation types
+    This study investigates whether COMET-BART's performance on the ATOMIC$^{2020}$ test set varies across the 23 relation types and three broad categories defined by \citet{hwang2021cometatomic}.
+    We partition the existing BART evaluation outputs by relation type and category, computing BLEU-1 through BLEU-4 seperately for each subset.
+    Category-level differences are small, but per-relation variance is substantial. \code{HinderedBy} and \code{ObjectUse} score highest, while \code{Causes}, \code{HasProperty}, and \code{CapableOf} score lowest, with class imbalance partly explaining the latter.
+
+
+
+
+
 
 
 \end{abstract}
