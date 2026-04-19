@@ -1,59 +1,23 @@
 \section{Introduction}
-% \section{Introduction (10 points, 200 words)}
-% Write a brief introduction of your chosen assignment that provides an overview of task and the key ideas of the methods used.
-% Report should be at most five (5) pages long excluding references.
-% You can include a list of research questions or summary list of findings at the end of the introduction.
 
-% \begin{enumerate}
-%     \item Research Question 1
-%     \item Research Question 2
-%     \item Research Question 3
-% \end{enumerate}
-
-
-% \textbf{Points:} \textit{Introduce field, motivation of this report, the contribution of this report, structure of the report}
-% \begin{itemize}
-%     \item Is the paper setting explained?
-%     \item Is the field of study introduced?
-%     \item Are the main works cited?
-%     \item Is the motivation well introduced?
-%     \item Is the contribution well argued?
-%     \item Is the structure of the paper explained?
-%     \item Language/Style
-% \end{itemize}
-
-
-
-
-% = SUGGESTED STRUCTURE
 %= PARAGRAPH 1  -  Field introduction
-
-% Introduce commonsense reasoning as a long-standing challenge in AI and NLP. Mention knowledge graphs as a key tool, and language models as a recent development in this space. This is where you cite the main works (ConceptNet, ATOMIC, the COMET paper by Bosselut et al. 2019, and the Hwang et al. 2021 paper you were given).
 
 Commonsense reasoning in the field of artificial intelligence (AI) and natural language processing (NLP) is defined as a system's human-like ability to make logical inferences about the world using everyday knowledge. For example, if someone is holding an umbrella, we can infer that it is raining. Although it seems simple for humans, implementing commonsense reasoning in AI systems, like language models, has been a long-standing challenge. Aiming to address this challenge, researchers have developed knowledge graphs, such as ConceptNet~\cite{speer2012conceptnet, speer2017conceptnet} and ATOMIC~\cite{sap2019atomic}, to represent commonsense knowledge in a structured format, which can be used to train language models to generate commonsense inferences. The COMET model, introduced by \citet{bosselut-etal-2019-comet}, is an example such language model.
 
 %= PARAGRAPH 2  -  The paper's contribution (context)
-
-% Briefly explain what Hwang et al. (2021) proposed — ATOMIC$^{2020}$ and COMET-BART — and what they demonstrated overall. This sets up the "paper setting" required by the rubric. Keep it concise since you will go deeper in your summary section.
 
 \citet{hwang2021cometatomic} proposed ATOMIC$^{2020}$, an updated version of the original ATOMIC knowledge graph, and COMET-BART, a language model trained on ATOMIC$^{2020}$ to generate commonsense inferences. Commonsense knowledge in ATOMIC$^{2020}$ is organized into 23 relation types (e.g., "xWant", "oEffect", "xReact") categorised into three interaction types: social interactions, physical interactions, and event-centered interactions.
 
 
 %= PARAGRAPH 3  -  Motivation for your investigation
 
-% The Hwang et al. paper reports aggregate performance metrics across all relation types combined. Motivate why this is insufficient — different relation types represent fundamentally different kinds of commonsense knowledge (social, physical, event-centred), so aggregate scores may hide variation. This is your "why does this matter" paragraph.
-
 While \citet{hwang2021cometatomic} show that COMET-BART outperforms other commonsense generation models in benchmarks, they only report aggregate performance metrics across all relation types combined. This is insufficient because different relation types represent fundamentally different kinds of commonsense knowledge (social, physical, event-centered), and aggregate scores may hide variation in performance across these categories.
 
 
 %= PARAGRAPH 4  -  Your contribution
 
-% State clearly what your investigation adds: a per-relation and per-category BLEU breakdown of COMET-BART's outputs on the ATOMIC$^{2020}$ test set, which the original paper does not provide. Be specific but brief.
-
 In this report, we provide a per-relation partitioning strategy of COMET-BART's performance on the ATOMIC$^{2020}$ test set, which the original paper does not provide. We compute BLEU-1 to BLEU-4 scores for each of the 23 relation types, instead of only BLEU-1 as is done in Table 3 in the original paper, and then aggregate these scores into the three interaction categories (social, physical, event-centered) to identify patterns in COMET-BART's performance across different types of commonsense knowledge. This analysis allows us to uncover strengths and weaknesses in COMET-BART's ability to generate commonsense inferences across different relation types.
 
 %= PARAGRAPH 5  -  Structure of the report
-
-% One or two sentences describing what each subsequent section covers (summary, methods, results, conclusion).
 
 The structure of this report is as follows: Section~\ref{sec:relatedwork} provides a summary of related works, including the methods they used and their main findings. Section~\ref{sec:methods} describes the methods we used to compute the per-relation and per-category BLEU-1 to BLEU-4 scores. Section~\ref{sec:experimentalresults} presents the results of our experimental analysis. In Section~\ref{sec:discussion}, we discuss the significance of the results in our findings, and in Section~\ref{sec:conclusion}, we conclude the report with a summary of our contributions and suggestions for future work.
