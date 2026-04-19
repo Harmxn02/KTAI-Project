@@ -2,20 +2,25 @@
 % \section{Conclusion (5 points, 100 words)}
 \label{sec:conclusion}
 
-\textbf{Points} \textit{Summary of the paper with the main message and future work}
-\begin{itemize}
-	\item Does the conclusion summarize well the paper
-	\item Does the conclusion consider future work
-\end{itemize}
+% \textbf{Points} \textit{Summary of the paper with the main message and future work}
+% \begin{itemize}
+% 	\item Does the conclusion summarize well the paper
+% 	\item Does the conclusion consider future work
+% \end{itemize}
 
 
 
 
 % = PARAGRAPH 1 - Summary
 
-Restate the motivation (aggregate metrics hide per-relation variance), the method (partitioning by relation type and category), and the two headline findings (category-level differences are small; per-relation variance is large, with `HinderedBy' and `ObjectUse' as standout performers)
+% Restate the motivation (aggregate metrics hide per-relation variance), the method (partitioning by relation type and category), and the two headline findings (category-level differences are small; per-relation variance is large, with `HinderedBy' and `ObjectUse' as standout performers)
+
+In this paper, we investigated the performance of a language model across different relation types and categories. We found that while category-level differences in performance were relatively small, there was significant variance at the individual relation level. Notably, the `HinderedBy' and `ObjectUse' relations stood out as particularly strong performers, while other relations showed much weaker performance. Our investigation showed that a more granular analysis can provide valuable insights into the strengths and weaknesses of language models in generating common sense knowledge.
+
 
 % = PARAGRAPH 2 - Future work
 
-Suggest two directions: first, repeating the analysis with human evaluation scores rather than BLEU to get a more meaningful per-relation quality estimate; second, investigating whether a more balanced test set would change the conclusions about weak-performing relations
+% Suggest two directions: first, repeating the analysis with human evaluation scores rather than BLEU to get a more meaningful per-relation quality estimate; second, investigating whether a more balanced test set would change the conclusions about weak-performing relations
+
+In future work this analysis could be repeated using human evaluation scores instead of BLEU. As mentioned in Section~\ref{sec:discussion}, BLEU may not be the best metric for evaluating the quality of generated text in this context, and human evaluation could provide a more meaningful estimate of per-relation quality. It would also be interesting to investigate how a more balanced test set, with more examples of the weaker-performing relations, would alter the model's performance specifically for those relations.
 
