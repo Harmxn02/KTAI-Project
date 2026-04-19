@@ -6,7 +6,7 @@
 
 \subsection{Evaluation pipeline}
 
-We reuse the existing \code{automatic\_eval.py} pipeline from the COMET-ATOMIC-2020 repository, without any model retraining. The input consists of the pregenerated BART output file (\code{BART-atomic\_2020.json}), which contains greedy-decoded tails for the ATOMIC2020 test set, paired against reference tails from \code{test.tsv}. This setup has a twofold purpose: it allows us to verify the results from the original paper, and it allows us to make small modifications to the evaluation pipeline to support our proposed partitioning strategy.
+We reuse the existing \code{automatic\_eval.py} pipeline from the COMET-ATOMIC-2020 repository\footnote{Our modified code is available at: \url{https:github.com/Harmxn02/KTAI-Project-comet-atomic-2020}}, without any model retraining. The input consists of the pregenerated BART output file (\code{BART-atomic\_2020.json}), which contains greedy-decoded tails for the ATOMIC2020 test set, paired against reference tails from \code{test.tsv}. This setup has a twofold purpose: it allows us to verify the results from the original paper, and it allows us to make small modifications to the evaluation pipeline to support our proposed partitioning strategy.
 
 
 % = PARAGRAPH 2 - Partitioning strategy
