@@ -1,22 +1,7 @@
 \section{Discussion}
-% \section{Discussion (10 points, 250 words)}
 \label{sec:discussion}
-% Additionally, you can include a separate discussion section in which you summarize the results, indicate possible limitations of your work, and provide suggestions for future research.
-
-
-% \textbf{Points}: \textit{Discuss the significance of the results}
-% \begin{itemize}
-% 	\item Is the discussion plausible
-% 	\item Does the discussion consider strong points
-% 	\item Does the discussion consider limitations of the study
-% 	\item Does the discussion consider ethical implications?
-% 	\item Language/Structure/Clarity
-% \end{itemize}
-
 
 % = PARAGRAPH 1 - Strong points / significance of findings
-
-% Discuss what the results confirm positively: COMET-BART's fine-tuning on ATOMIC$^{2020}$ delivers strong performance across nearly all relation types, and that the \code{HinderedBy} result in particular demonstrates the value of structured knowledge graph training for relations that language models inherently struggle with. Connect this back to the paper's broader claim that fine-tuning on high-quality knowledge graphs complements pretrained language models. 
 
 \subsection{Significance}
 
@@ -26,20 +11,14 @@ The results confirm that COMET-BART's fine-tuning on ATOMIC$^{2020}$ delivers st
 
 \subsection{Limitations}
 
-% Two main limitations to address here. First, BLEU is an imperfect metric for commonsense generation \textemdash{} it rewards n-gram overlap but does not measure whether a generated tail is actually plausible or sensible, which is why the paper also used human evaluation. Second, the severe class imbalance in the test set (some relations having as few as 1 example) means per-relation scores for rare relations are statistically unreliable. Note that a more balanced test set would be needed to draw firm conclusions about weak performers.
-
 The original paper and our study have several limitations. First, BLEU is an imperfect metric for commonsense generation because it does not measure whether a generated tail is actually plausible or sensible. This is why the original paper also used human evaluation to complement the automatic metrics. Another is the severe class imbalance in the test set, with some relations having as few as 1 example, means that per-relation scores for rare relations are statistically unreliable. An expansion of the test set to include more examples for underrepresented relations would be necessary in order to draw firm statistical conclusions about weak performers.
 
 
 % = PARAGRAPH 3 - Limitations of the partitioning strategy
 
-% The three-category partition is borrwed directly from the paper's own taxonomy, which is convenient but not the only valid choice. Alternative partitions such as output length or head event frequency might have revelaed different patterns. This addresses the rubric's expectation that you critically reflect on your own methodological choices.
-
 We conveniently borrowed the three-category partition directly from the original paper's own taxonomy. This is however not the only valid partitioning strategy. Alternative partitions such as output length or head event frequency might have revealed different patterns in the results. For example, it is possible that COMET-BART performs better on shorter outputs or more frequent head events, which would not be captured by the relation-based partition.
 
 % = PARAGRAPH 4 - Ethical implications
-
-% Briefly note that commonsense knowledge graphs like ATOMIC$^{2020}$ are crowdsourced, meaning they can reflect societal biases present in the annotators. A model trained on such data and evaluated positively by BLEU could still be generating outputs that reinforce stereotypes \textemdash{} something BLEU would not detect
 
 \subsection{Ethical implications}
 
